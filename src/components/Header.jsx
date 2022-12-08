@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <StContainer>
-      <div>My Todo List</div>
+      <div>My Todo List 수정되었얌</div>
       <div>React</div>
     </StContainer>
   );
