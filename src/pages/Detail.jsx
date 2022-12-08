@@ -16,31 +16,31 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <StContainer>
-      <StDialog>
+    <Container>
+      <Wrapper>
         <div>
-          <StDialogHeader>
+          <Header>
             <div>ID :{todo.id}</div>
-            <StButton
+            <Button
               borderColor="#ddd"
               onClick={() => {
                 navigate("/");
               }}
             >
               이전으로
-            </StButton>
-          </StDialogHeader>
-          <StTitle>{todo.title}</StTitle>
-          <StBody>{todo.body}</StBody>
+            </Button>
+          </Header>
+          <Title>{todo.title}</Title>
+          <Body>{todo.body}</Body>
         </div>
-      </StDialog>
-    </StContainer>
+      </Wrapper>
+    </Container>
   );
 };
 
 export default Detail;
 
-const StContainer = styled.div`
+const Container = styled.div`
   border: 2px solid #eee;
   width: 100%;
   height: 100vh;
@@ -49,7 +49,7 @@ const StContainer = styled.div`
   justify-content: center;
 `;
 
-const StDialog = styled.div`
+const Wrapper = styled.div`
   width: 600px;
   height: 400px;
   border: 1px solid #eee;
@@ -58,7 +58,7 @@ const StDialog = styled.div`
   justify-content: space-between;
 `;
 
-const StDialogHeader = styled.div`
+const Header = styled.div`
   display: flex;
   height: 80px;
   justify-content: space-between;
@@ -66,15 +66,15 @@ const StDialogHeader = styled.div`
   align-items: center;
 `;
 
-const StTitle = styled.h1`
+const Title = styled.h1`
   padding: 0 24px;
 `;
 
-const StBody = styled.main`
+const Body = styled.main`
   padding: 0 24px;
 `;
 
-const StButton = styled.button`
+const Button = styled.button`
   border: 1px solid ${({ borderColor }) => borderColor};
   height: 40px;
   width: 120px;

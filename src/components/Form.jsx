@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import nextId from "react-id-generator";
 import { addTodo } from "../redux/modules/todos";
+import uuid from "react-uuid";
 
 const Form = () => {
-  const id = nextId();
+  const id = uuid();
+
+  // uuid를 통해서 아이디의 고유값 생성
 
   const dispatch = useDispatch();
   const [todo, setTodo] = useState({
@@ -24,7 +26,7 @@ const Form = () => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (todo.title.trim() === "" || todo.body.trim() === "") return;
-
+    // 만약 제목이나 내용 둘중 하나라도 비어있다면 추가하지 못하게 하기
     dispatch(addTodo({ ...todo, id }));
     setTodo({
       id: 0,
@@ -35,42 +37,31 @@ const Form = () => {
   };
 
   return (
-    <StAddForm onSubmit={onSubmitHandler}>
-      <StInputGroup>
-        <StFormLabel>제목</StFormLabel>
-        <StAddInput
+    <Container onSubmit={onSubmitHandler}>
+      <Wrapper>
+        <Label>제목</Label>
+        <Input
           type="text"
           name="title"
           value={todo.title}
           onChange={onChangeHandler}
         />
-        <StFormLabel>내용</StFormLabel>
-        <StAddInput
+        <Label>내용</Label>
+        <Input
           type="text"
           name="body"
           value={todo.body}
           onChange={onChangeHandler}
         />
-      </StInputGroup>
-      <StAddButton>추가하기</StAddButton>
-    </StAddForm>
+      </Wrapper>
+      <Button>추가하기</Button>
+    </Container>
   );
 };
 
 export default Form;
 
-const StInputGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
-
-const StFormLabel = styled.label`
-  font-size: 16px;
-  font-weight: 700;
-`;
-
-const StAddForm = styled.form`
+const Container = styled.form`
   background-color: #eee;
   border-radius: 12px;
   margin: 0 auto;
@@ -81,7 +72,18 @@ const StAddForm = styled.form`
   gap: 20px;
 `;
 
-const StAddInput = styled.input`
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+const Label = styled.label`
+  font-size: 16px;
+  font-weight: 700;
+`;
+
+const Input = styled.input`
   height: 40px;
   width: 240px;
   border: none;
@@ -89,7 +91,7 @@ const StAddInput = styled.input`
   padding: 0 12px;
 `;
 
-const StAddButton = styled.button`
+const Button = styled.button`
   border: none;
   height: 40px;
   cursor: pointer;

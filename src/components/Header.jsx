@@ -3,15 +3,17 @@ import styled from "styled-components";
 
 const Header = () => {
   return (
-    <StContainer>
+    <Container>
       <div>My Todo List</div>
       <div>React</div>
-    </StContainer>
+    </Container>
   );
 };
 export default Header;
 
-const StContainer = styled.div`
+// 맨위 상단바
+
+const Container = styled.div`
   border: 1px solid #ddd;
   height: 60px;
   display: flex;

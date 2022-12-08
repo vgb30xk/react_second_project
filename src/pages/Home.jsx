@@ -14,4 +14,6 @@ const Home = () => {
   );
 };
 
+// 각 컴포넌트들의 요소들 불러와서 순서 배치하기
+
 export default Home;
